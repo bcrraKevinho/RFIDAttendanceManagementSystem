@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="sistemaRFIDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="usp_ActualizaAsistencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idDetalle" Type="int" Mode="In" />
+          <Parameter Name="idEstatus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultaRegistrosAsistencias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idSalon" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultaRegistrosAsistencias2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idSalon" Type="varchar" Mode="In" />
+          <Parameter Name="horarioSeleccionado" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_GeneraHeaderDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_RecuperaHorarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idsalon" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_RecuperaMaestro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="noEmpleado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_RegistraAsistencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mac" Type="varchar" Mode="In" />
+          <Parameter Name="idsalon" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="sistemaRFIDModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sistemaRFIDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="sistemaRFIDEntities1" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="usp_ActualizaAsistencia">
+            <Parameter Name="idDetalle" Mode="In" Type="Int32" />
+            <Parameter Name="idEstatus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultaRegistrosAsistencias" ReturnType="Collection(sistemaRFIDModel.usp_ConsultaRegistrosAsistencias_Result)">
+            <Parameter Name="idSalon" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultaRegistrosAsistencias2" ReturnType="Collection(sistemaRFIDModel.usp_ConsultaRegistrosAsistencias2_Result)">
+            <Parameter Name="idSalon" Mode="In" Type="String" />
+            <Parameter Name="horarioSeleccionado" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GeneraHeaderDetails" />
+          <FunctionImport Name="usp_RecuperaHorarios" ReturnType="Collection(sistemaRFIDModel.usp_RecuperaHorarios_Result)">
+            <Parameter Name="idsalon" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_RecuperaMaestro" ReturnType="Collection(sistemaRFIDModel.usp_RecuperaMaestro_Result)">
+            <Parameter Name="noEmpleado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_RegistraAsistencia" ReturnType="Collection(sistemaRFIDModel.usp_RegistraAsistencia_Result)">
+            <Parameter Name="mac" Mode="In" Type="String" />
+            <Parameter Name="idsalon" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="usp_ConsultaRegistrosAsistencias_Result">
+          <Property Type="Int32" Name="idDetalle" Nullable="false" />
+          <Property Type="String" Name="nombreCompleto" Nullable="false" MaxLength="102" />
+          <Property Type="Int32" Name="id_Estatus" Nullable="false" />
+          <Property Type="String" Name="estatus" Nullable="false" MaxLength="15" />
+          <Property Type="DateTime" Name="horaLlegada" Nullable="true" Precision="23" />
+          <Property Type="String" Name="materia" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="horarioClase" Nullable="false" Precision="23" />
+          <Property Type="String" Name="edificio" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="mac_Persona" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultaRegistrosAsistencias2_Result">
+          <Property Type="Int32" Name="idDetalle" Nullable="false" />
+          <Property Type="String" Name="nombreCompleto" Nullable="false" MaxLength="102" />
+          <Property Type="Int32" Name="id_Estatus" Nullable="false" />
+          <Property Type="String" Name="estatus" Nullable="false" MaxLength="15" />
+          <Property Type="DateTime" Name="horaLlegada" Nullable="true" Precision="23" />
+          <Property Type="String" Name="materia" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="horarioClase" Nullable="false" Precision="23" />
+          <Property Type="String" Name="edificio" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="mac_Persona" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_RecuperaHorarios_Result">
+          <Property Type="Int32" Name="idHorario" Nullable="false" />
+          <Property Type="DateTime" Name="fechaHoraClase" Nullable="false" Precision="23" />
+          <Property Type="String" Name="mac_Salon" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="salon" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="materia" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipo" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="nombreMaestro" Nullable="false" MaxLength="102" />
+        </ComplexType>
+        <ComplexType Name="usp_RecuperaMaestro_Result">
+          <Property Type="String" Name="macMaestro" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="aPaterno" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="aMaterno" Nullable="false" MaxLength="25" />
+          <Property Type="Int32" Name="noEmpleado" Nullable="false" />
+          <Property Type="String" Name="profesion" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_RegistraAsistencia_Result">
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="102" />
+          <Property Type="Int32" Name="matricula" Nullable="false" />
+          <Property Type="String" Name="carrera" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sistemaRFIDModelStoreContainer" CdmEntityContainer="sistemaRFIDEntities1" >
+          <FunctionImportMapping FunctionImportName="usp_ActualizaAsistencia" FunctionName="sistemaRFIDModel.Store.usp_ActualizaAsistencia" />
+          <FunctionImportMapping FunctionImportName="usp_ConsultaRegistrosAsistencias" FunctionName="sistemaRFIDModel.Store.usp_ConsultaRegistrosAsistencias">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sistemaRFIDModel.usp_ConsultaRegistrosAsistencias_Result">
+                <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
+                <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+                <ScalarProperty Name="id_Estatus" ColumnName="id_Estatus" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="horaLlegada" ColumnName="horaLlegada" />
+                <ScalarProperty Name="materia" ColumnName="materia" />
+                <ScalarProperty Name="horarioClase" ColumnName="horarioClase" />
+                <ScalarProperty Name="edificio" ColumnName="edificio" />
+                <ScalarProperty Name="mac_Persona" ColumnName="mac_Persona" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultaRegistrosAsistencias2" FunctionName="sistemaRFIDModel.Store.usp_ConsultaRegistrosAsistencias2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sistemaRFIDModel.usp_ConsultaRegistrosAsistencias2_Result">
+                <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
+                <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+                <ScalarProperty Name="id_Estatus" ColumnName="id_Estatus" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="horaLlegada" ColumnName="horaLlegada" />
+                <ScalarProperty Name="materia" ColumnName="materia" />
+                <ScalarProperty Name="horarioClase" ColumnName="horarioClase" />
+                <ScalarProperty Name="edificio" ColumnName="edificio" />
+                <ScalarProperty Name="mac_Persona" ColumnName="mac_Persona" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GeneraHeaderDetails" FunctionName="sistemaRFIDModel.Store.usp_GeneraHeaderDetails" />
+          <FunctionImportMapping FunctionImportName="usp_RecuperaHorarios" FunctionName="sistemaRFIDModel.Store.usp_RecuperaHorarios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sistemaRFIDModel.usp_RecuperaHorarios_Result">
+                <ScalarProperty Name="idHorario" ColumnName="idHorario" />
+                <ScalarProperty Name="fechaHoraClase" ColumnName="fechaHoraClase" />
+                <ScalarProperty Name="mac_Salon" ColumnName="mac_Salon" />
+                <ScalarProperty Name="salon" ColumnName="salon" />
+                <ScalarProperty Name="materia" ColumnName="materia" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="nombreMaestro" ColumnName="nombreMaestro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_RecuperaMaestro" FunctionName="sistemaRFIDModel.Store.usp_RecuperaMaestro">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sistemaRFIDModel.usp_RecuperaMaestro_Result">
+                <ScalarProperty Name="macMaestro" ColumnName="macMaestro" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="aPaterno" ColumnName="aPaterno" />
+                <ScalarProperty Name="aMaterno" ColumnName="aMaterno" />
+                <ScalarProperty Name="noEmpleado" ColumnName="noEmpleado" />
+                <ScalarProperty Name="profesion" ColumnName="profesion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_RegistraAsistencia" FunctionName="sistemaRFIDModel.Store.usp_RegistraAsistencia">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sistemaRFIDModel.usp_RegistraAsistencia_Result">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="carrera" ColumnName="carrera" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
