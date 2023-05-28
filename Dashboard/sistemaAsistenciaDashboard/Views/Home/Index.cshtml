@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Inicio";
+}
+@section SubMenueOptions{
+    <ul class="navbar-nav d-flex justify-content-around">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+        </li>
+    </ul>
+    <ul class="navbar-nav d-flex justify-content-around">
+        <li class="nav-item">
+            <div class="dropdown">
+                <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @ViewBag.user
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item text-center" type="button">@Html.ActionLink("Cerrar Sesión", "LogOff", "Account")</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+}
+@section ContentHeader{
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Asistencia RFID</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<div class="container mt-1">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">¿Qué es RFID? </h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="card my-4">
+                <div class="card-body">
+                    <h2 class="card-title"></h2>
+                    <p class="card-text">
+                        RFID (Radio Frequency Identification) es una tecnología que utiliza ondas de radio para identificar y rastrear objetos o personas. Consiste en etiquetas RFID que contienen chips y antenas, y lectores RFID que interactúan con las etiquetas.
+                    </p>
+                </div>
+            </div>
+            <div class="card my-4 d-flex align-items-center">
+                <img src="~/img/rfid.png" width="500" height="400" alt="Descripción de la imagen">
+            </div>
+            <div class="card my-4">
+                <div class="card-body">
+                    <h2 class="card-title">Aplicaciones de RFID</h2>
+                    <ul class="card-text">
+                        <li>Gestión de inventario y logística</li>
+                        <li>Control de acceso y seguridad</li>
+                        <li>Pago sin contacto (por ejemplo, tarjetas de crédito o pases de transporte)</li>
+                        <li>Etiquetas de seguimiento en productos y envíos</li>
+                        <li>Identificación de mascotas o ganado</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card my-4">
+                <div class="card-body">
+                    <h2 class="card-title">Consideraciones de seguridad</h2>
+                    <p class="card-text">
+                        Si bien RFID ofrece beneficios, es importante tener en cuenta consideraciones de seguridad, como el cifrado de datos y la protección contra la clonación de etiquetas. Además, se debe cumplir con las regulaciones de privacidad y protección de datos en el uso de la tecnología RFID.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+    </div>
+
+
+</div>
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#tv_h").addClass("active");
+        });
+
+    </script>
+}

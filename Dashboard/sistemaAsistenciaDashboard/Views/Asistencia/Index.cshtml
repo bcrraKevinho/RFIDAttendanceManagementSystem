@@ -1,0 +1,199 @@
+﻿@model List<sistemaAsistenciaDashboard.Models.detalleAsistenciaModel>
+@{
+    ViewBag.Title = "Gestión Asistencia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section SubMenueOptions{
+    <ul class="navbar-nav d-flex justify-content-around">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+        </li>
+    </ul>
+    <ul class="navbar-nav d-flex justify-content-around">
+        <li class="nav-item">
+            <div class="dropdown">
+                <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @ViewBag.user
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item text-center" type="button">@Html.ActionLink("Cerrar Sesión", "LogOff", "Account")</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+}
+@section ContentHeader{
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>@ViewBag.title</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+                        <li class="breadcrumb-item active">@ViewBag.Title</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<div class="card card-primary card-outline">
+    <div class="card-body">
+        @using (Html.BeginForm("Index", "Asistencia", FormMethod.Post))
+        {
+            <div class="row">
+
+                <div class="col-sm-5">
+                    <!-- select -->
+                    <div class="form-group">
+                        <label>Salon</label>
+                        <select name="salon" class="form-control">
+                            <option value="@ViewBag.Salon.mac_Salon">@ViewBag.Salon.salon</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Hora</label>
+                    <select name="hora" class="form-control">
+                        @foreach (var item in ViewBag.Horarios)
+                        {
+                            <option value="@item.fechaHoraClase">@item.fechaHoraClase</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-sm-2 d-flex align-items-end">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </div>
+
+                </div>
+
+
+            </div>
+        }
+    </div>
+</div>
+
+<div class="card card-primary card-outline">
+    @{
+        if (Model != null && Model.Count() > 0)
+        {
+            <div class="card-body">
+                <div class="col table-responsive">
+                    <table id="partTable" class="table table-striped table-valign-middle datatables">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Nombre de alumno
+                                </th>
+                                <th>
+                                    Estatus
+                                </th>
+                                <th>
+                                    Hora llegada
+                                </th>
+                                <th>
+                                    Horario clase
+                                </th>
+                                <th>
+                                    Materia
+                                </th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.nombreCompleto)
+                                    </td>
+                                    <td>
+                                        @switch (item.id_Estatus)
+                                        {
+                                            case 0:<span class="badge bg-danger">@Html.DisplayFor(modelItem => item.estatus)</span> break;
+                                        case 1: <span class="badge bg-success">@Html.DisplayFor(modelItem => item.estatus)</span> break;
+                                    case 2: <span class="badge bg-primary">@Html.DisplayFor(modelItem => item.estatus)</span>break;
+                                case 3: <span class="badge bg-warning">@Html.DisplayFor(modelItem => item.estatus)</span>break;
+                        }
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.horaLlegada)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.horarioClase)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.materia)
+                                    </td>
+                                    <td>
+                                        @*@if (item.horaLlegada == null)
+                                        {
+                                            <a href='@Url.Action("RegistrarAsistencia", "Asistencia", new { mac = item.mac_Persona, idsalon = ViewBag.Salon.mac_Salon, horaClase = item.horarioClase, horallegada = item.horaLlegada })' class="btn btn-link text-success"> <i class="fas fa-check"></i></a>
+                                        }*@
+                                        @if ( item.id_Estatus != null)
+                                        {
+                                            <a href='@Url.Action("ActualizarAsistencia", "Asistencia",  new { idDetalle = item.idDetalle, idEstatus = 1, idsalon = ViewBag.Salon.mac_Salon, horaClase = item.horarioClase})' class="btn btn-link text-success"> <i class="fas fa-check" title="Asistencia"></i></a>
+                                        }
+                                        
+                                    </td>
+                                    <td>
+                                        @if (item.id_Estatus != null)
+                                        {
+                                            <a href='@Url.Action("ActualizarAsistencia", "Asistencia", new { idDetalle = item.idDetalle, idEstatus = 2, idsalon = ViewBag.Salon.mac_Salon, horaClase = item.horarioClase})' class="btn btn-link text-primary"> <i class="fas fa-check-square" title="Retardo"></i></a>
+                                        }
+                                        @if (item.id_Estatus != null)
+                                        {
+                                            <a href='@Url.Action("ActualizarAsistencia", "Asistencia", new { idDetalle = item.idDetalle, idEstatus = 3, idsalon = ViewBag.Salon.mac_Salon, horaClase = item.horarioClase})' class="btn btn-link text-warning"> <i class="fas fa-check-circle" title="Justificar"></i></a>
+                                        }
+                                        @if (item.id_Estatus != null)
+                                        {
+                                            <a href='@Url.Action("ActualizarAsistencia", "Asistencia", new { idDetalle = item.idDetalle, idEstatus = 0, idsalon = ViewBag.Salon.mac_Salon, horaClase = item.horarioClase })' class="btn btn-link text-danger"> <i class="fas fa-check-square" title="Falta"></i></a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="card-body">
+                <div class="container-fluid justify-content-center text-center">
+                    <h3>No hay resultados</h3>
+                    <div class="d-flex justify-content-center"><img src="~/img/noResult.png" alt="Alternate Text" id="noResult" class="w-25" /></div>
+                    @if (ViewBag.PrimerCarga == true)
+                    {
+                        <p>Ingresa un filtro de búsqueda...</p>
+                    }
+                    else
+                    {
+                        <p>Intenta usando otros filtros de búsqueda</p>
+                    }
+
+                </div>
+            </div>
+        }
+
+    }
+
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#tv_a").addClass("active");
+        });
+
+    </script>
+}

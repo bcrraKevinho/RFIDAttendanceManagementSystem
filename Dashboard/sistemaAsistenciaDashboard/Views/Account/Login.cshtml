@@ -1,0 +1,44 @@
+﻿@using sistemaAsistenciaDashboard.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Asistencia RFID | Iniciar Sesión";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<div class="login-box">
+    <!-- /.login-logo -->
+    <div class="card card-outline card-primary">
+        <div class="card-header text-center">
+            <a href="@Url.Action("Login","Account")" class="h1">Asistencia<b>RFID</b></a>
+        </div>
+        <p class="text-center text-danger">@TempData["ErrorMSG"]</p>
+        <div class="card-body">
+            <p class="login-box-msg">Ingresa NoEmpleado</p>
+
+            @using (Html.BeginForm("Login", "Account", new { returnUrl = "/Home/Index" }, FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="input-group mb-3">
+                    @Html.TextBoxFor(m => m.noEmpleado, "", new { placeholder = "No Empleado", @class = "form-control" })
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.noEmpleado, "", new { @class = "text-danger col-12" })
+                </div>
+
+                <div class="row justify-content-center">
+                    <!-- /.col -->
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-info btn-block">Ingresar</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            }
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
+<!-- /.login-box -->

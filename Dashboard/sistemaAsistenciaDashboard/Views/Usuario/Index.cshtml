@@ -1,0 +1,83 @@
+﻿@*@model sistemaAsistenciaDashboard.Models.maestroModel*@
+@{
+    ViewBag.Title = "Información Cuenta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section SubMenueOptions{
+    <ul class="navbar-nav d-flex justify-content-around">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+        </li>
+    </ul>
+    <ul class="navbar-nav d-flex justify-content-around">
+        <li class="nav-item">
+            <div class="dropdown">
+                <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @ViewBag.user
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item text-center" type="button">@Html.ActionLink("Cerrar Sesión", "Logout", "Account")</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+}
+@section ContentHeader{
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>@ViewBag.title</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+                        <li class="breadcrumb-item active">@ViewBag.Title</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<div class="card card-primary card-outline">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="nombre" class="col-sm-auto col-form-label">Nombre</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nombre" value="@ViewBag.user" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="noempleado" class="col-sm-auto col-form-label">no Empleado</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="noempleado" value="@ViewBag.noEmpleado" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="profesion" class="col-sm-auto col-form-label">Profesión</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="profesion" value="@ViewBag.profesion" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#tv_u").addClass("active");
+        });
+
+    </script>
+}
