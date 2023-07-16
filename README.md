@@ -1,6 +1,6 @@
-# IoT Attendance Management System with RFID Technology
+# RFID Attendance Management System
 
-![IoT Attendance Management System](images/iot_attendance_system.jpg)
+![RFID Attendance Management System](readmeContent/cover.png)
 
 ## Introduction
 
