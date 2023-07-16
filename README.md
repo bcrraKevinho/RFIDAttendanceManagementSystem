@@ -4,7 +4,7 @@
 
 ## Introduction
 
-The IoT Attendance Management System is a project designed to manage the attendance of students and teachers within an educational institution using RFID (Radio Frequency Identification) technology. The system consists of three fundamental subsystems:
+The RFID Attendance Management System is a project designed to manage the attendance of students and teachers within an educational institution using RFID (Radio Frequency Identification) technology. The system consists of three fundamental subsystems:
 
 1. **RFID System**: This system comprises RFID cards with tags and a reader-transmitter device that uses the RFID NFC Data Link protocol. It enables real-time attendance registration for both students and teachers in specific classrooms.
 
@@ -19,7 +19,7 @@ The IoT Attendance Management System is a project designed to manage the attenda
 To reproduce the RFID System physically, follow these detailed steps:
 
 1. Assemble the components as shown in FIGURE 1: ESP32 with Wi-Fi connectivity in Station mode and an RFID reader.
-   ![RFID System Components](images/rfid_system_components.jpg)
+   ![RFID connections](images/connections.jpg)
 
 2. Use the Arduino IDE to upload the RFID_Attendance.ino file to the ESP32, which facilitates the communication with the RFID reader.
 
