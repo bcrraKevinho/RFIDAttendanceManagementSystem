@@ -19,7 +19,7 @@ The RFID Attendance Management System is a project designed to manage the attend
 To reproduce the RFID System physically, follow these detailed steps:
 
 1. Assemble the components as shown in FIGURE 1: ESP32 with Wi-Fi connectivity in Station mode and an RFID reader.
-   ![RFID connections](images/connections.jpg)
+   ![RFID connections](images/connections.png)
 
 2. Use the Arduino IDE to upload the RFID_Attendance.ino file to the ESP32, which facilitates the communication with the RFID reader.
 
