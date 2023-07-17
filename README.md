@@ -88,8 +88,6 @@ To install the Web System API:
 
 16. Open a web browser or use a tool like Postman to test the API endpoints.
 
-![Dashboard](readmeContent/dashboard.png)
-
 ### Section 4: Installing the Web System Dashboard
 
 To install the Web System Dashboard:
@@ -119,6 +117,8 @@ To install the Web System Dashboard:
 11. Once the deployment process is complete, navigate to the deployed URL (if applicable) or the target folder (if using "Folder" or "File System" publishing).
 
 12. Test the deployed dashboard to ensure that it functions correctly in the production environment with the API.
+
+![Dashboard](readmeContent/dashboard.png)
 
 ### Section 5: Implementing the RFID system
 
