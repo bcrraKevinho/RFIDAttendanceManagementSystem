@@ -21,22 +21,6 @@ To reproduce the RFID System physically, follow these detailed steps:
 1. Assemble the components as shown in the figure below: ESP32, display lcd 2x16 and RFID reader.
    ![RFID connections](readmeContent/connections.png)
 
-<!---3. Add images of the ESP32 connections and the RFID reader for better reference. -->
-
-<!--
-### Section 2: Installing and Configuring Web and Database Servers
-
-For the installation and configuration of web and database servers, we recommend using XAMPP:
-
-1. Download and install XAMPP from the official website.
-
-2. Configure Apache and MySQL servers to run on the required ports.
-
-3. Create a database using phpMyAdmin and import the provided "sistemaRFID.bak" file.
-
-4. Elaborate on the installation process step-by-step, including relevant screenshots.
--->
-
 ### Section 2: Installing the Database
 
 To install the database:
@@ -60,6 +44,8 @@ To install the database:
 9. Click the "OK" button to start the database restore process.
 
 10. Once the restore process is complete, the "sistemaRFID" database should appear in the Object Explorer under the "Databases" node.
+
+![Database_restored](readmeContent/database_restored.png)
 
 ### Section 3: Installing the Web System API
 
@@ -102,6 +88,8 @@ To install the Web System API:
 
 16. Open a web browser or use a tool like Postman to test the API endpoints.
 
+![Dashboard](readmeContent/dashboard.png)
+
 ### Section 4: Installing the Web System Dashboard
 
 To install the Web System Dashboard:
@@ -119,12 +107,12 @@ To install the Web System Dashboard:
 6. Select "Publish" from the context menu.
 
 7. In the "Publish" window, select the appropriate publishing target.
-      ⚫If deploying to a file system, choose "Folder" or "File System" as the publishing method.
-      ⚫If deploying to a web server or hosting provider, choose "Web Deploy" or "FTP."
+   - If deploying to a file system, choose "Folder" or "File System" as the publishing method.
+   - If deploying to a web server or hosting provider, choose "Web Deploy" or "FTP."
 
 8. Configure the publishing settings based on your chosen publishing target.
-      ⚫For "Folder" or "File System," specify the target folder where the published files will be stored.
-      ⚫For "Web Deploy" or "FTP," enter the necessary connection details (e.g., server URL, username, password) for the target server.
+   - For "Folder" or "File System," specify the target folder where the published files will be stored.
+   - For "Web Deploy" or "FTP," enter the necessary connection details (e.g., server URL, username, password) for the target server.
 
 9. Click the "Publish" button to start the publishing process.
     
